@@ -1,4 +1,4 @@
-local MoonLib = loadstring(game:HttpGet("https://gist.githubusercontent.com/Angelo-Gitland/4c27a6ea51f75dae459f1edceedc9675/raw/Project%2520Moon%2520Ui%2520Library"))()
+local MoonLib = loadstring(game:HttpGet("https://gist.githubusercontent.com/Angelo-Gitland/3677d310efab712378a1ec236836a03d/raw/5328e08a946007d08f320793c9895d03ab22149f/moon%2520ui"))() -- Updated link
 
 local Window = MoonLib:CreateWindow({
     Title = "Moon Ui Library", -- Default title, You can customize this
@@ -33,7 +33,7 @@ Extra:CreateTextLabel("Extra Features Place any buttons here") -- TextLabel & Te
 local Credits = Window:CreatePage("Credits", "Profile") -- Page title & Icon
 Credits:CreateSection("Developers")
 Credits:CreateDropdown("Developers", {
-    "Eric_3337", -- Button 1 (Dropdown)
+    "Eric_3337", --)
     "LLH Lua Land", -- Button 2 (Dropdown)
     "Lua Land Team", -- Button 3 (Dropdown)
 }, function(selected)
