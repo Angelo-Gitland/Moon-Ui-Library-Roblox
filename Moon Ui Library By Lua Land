@@ -1,3 +1,59 @@
+# Creating a TextLabel
+
+```lua
+Page:CreateTextLabel("TEXT_HERE")
+```
+
+# Creating a TextButton
+
+```lua
+Page:CreateTextButton("BUTTON_TITLE", function()
+    print("LOGIC_HERE")
+end)
+```
+
+# Creating a TextBox
+
+```lua
+Page:CreateTextBox("TEXT_HERE", function(text)
+    print("LOGIC_HERE", text)
+end)
+```
+
+# Creating a Toogle
+
+```lua
+Page:CreateToggle("Your Toggle Text Here", function(state)
+    print("TOOGLE_ON LOGIC & TOOGLE_OFF LOGIC", state)
+end)
+```
+
+# Creating a DropDown
+
+```lua
+Page:CreateDropdown("Select Options", {
+    "OPTION_1",
+    "OPTION_2",
+    "OPTION_3"
+}, function(selected)
+    print("SELECT_AT_LEAST_1", selected)
+end)
+```
+
+# Creating a Section
+
+```lua
+Page:CreateSection("TEXT_HERE")
+```
+
+# Creating a Page
+
+```lua
+Window:CreatePage("PAGE_TITLE", "ICON_NAME")
+```
+
+# Moon Ui Library Example 🌙
+
 local MoonLib = loadstring(game:HttpGet("https://gist.githubusercontent.com/Angelo-Gitland/3677d310efab712378a1ec236836a03d/raw/5328e08a946007d08f320793c9895d03ab22149f/moon%2520ui"))() -- Updated link
 
 local Window = MoonLib:CreateWindow({
@@ -45,3 +101,50 @@ Credits:CreateTextButton("Copy Discord Link", function()
     -- Send Notification > Set link to clipboard (If you want, Place your logic here)
     print("Discord link copied to clipboard")
 end)
+
+# Example Moon Ui Library With Logic 🌙
+
+```lua
+-- Page
+local Page = Window:CreatePage("Main Features", "Home")
+
+-- Section
+Page:CreateSection("Extra Scripts")
+
+-- TextLabel
+Page:CreateTextLabel("shewi loves Moon Ui")
+
+-- TextButton
+Page:CreateTextButton("Teleport to Spawn", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 10, 0)
+end)
+
+-- TextBox
+Page:CreateTextBox("Set WalkSpeed", function(text)
+    local speed = tonumber(text)
+    if speed then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+    end
+end)
+
+-- Toggle
+Page:CreateToggle("Infinite Jump", function(state)
+    if state then
+        game:GetService("UserInputService").JumpRequest:Connect(function()
+            game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+        end)
+    end
+end)
+
+-- Dropdown
+Page:CreateDropdown("Select Tool", {
+    "Sword",
+    "Gun",
+    "Bow"
+}, function(selected)
+    local tool = game:GetService("ReplicatedStorage"):FindFirstChild(selected)
+    if tool then
+        tool:Clone().Parent = game.Players.LocalPlayer.Backpack
+    end
+end)
+```
